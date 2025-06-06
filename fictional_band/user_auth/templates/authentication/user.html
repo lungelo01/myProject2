@@ -1,0 +1,14 @@
+{% extends "master.html" %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}User{% endblock %}</title>
+    </head>
+    <body>
+        {% block content %}
+        <h1> Welcome, {{username}} </h1>
+        <p> Your password is {{password}}</p>
+        {% endblock %}
+    </body>
+</html>
