@@ -8,18 +8,26 @@ from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
+"""index view
+
+"""
 def index(request):
     latest_question_list = Question.objects.order_by('-pub_date')[:5]
     context = {'latest_question_list': latest_question_list}
     return render(request, "index.html", context)
 
 
+"""detail view
+
+"""
 @login_required
 def detail(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     return render(request, 'detail.html', {'question':question})
 
+"""vote view
 
+"""
 def vote(request):
     question = get_object_or_404(Question)
     try:
@@ -40,7 +48,9 @@ def vote(request):
             reverse('polls:results')
         )
 
+"""register view
 
+"""
 def register(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
