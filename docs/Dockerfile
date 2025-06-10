@@ -18,6 +18,10 @@ COPY . .
 # Collect static files
 RUN python manage.py collectstatic --noinput
 
+# add README.md
+git add README.md
+git commit -m "Add project README"
+
 # Port and entrypoint
 EXPOSE 8000
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
